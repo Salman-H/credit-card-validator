@@ -3,8 +3,11 @@
  * whether it is a valid American Express, MasterCard, or Visa card number.
  * @author Salman Hashmi
  */
- 
- int main(void)
- {
-	 return 0;
- }
+#include <stdio.h>
+#include <cs50.h>
+#include <math.h>
+
+int main(void)
+{
+	return 0;
+}

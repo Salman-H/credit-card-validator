@@ -11,6 +11,8 @@
 int get_length(long long num);
 int get_identifier(long long num, int len);
 bool is_amex(int len, int id);
+bool is_mastercard(int len, int id);
+bool is_visa(int len, int id);
 
 int main(void)
 {
@@ -64,7 +66,7 @@ bool is_amex(len, id)
  *  
  *  Company     |  valid len  |      valid id
  *  ------------+-------------+--------------------
- *  MASTERCARD  |    16       |  51, 52, 53, 54, 55
+ *  MasterCard  |    16       |  51, 52, 53, 54, 55
  *  
  * @param len  length of card number of type int
  * @param id  card company identifier of type int
@@ -73,6 +75,26 @@ bool is_amex(len, id)
 bool is_mastercard(len, id)
 {
     if ( len == 16 && ( id == 51 || id == 52 || id == 53 || id == 54 || id == 55 ) )
+        return true;
+    else
+        return false;
+}
+
+/**
+ * Checks if card has a valid MasterCard number length and id
+ *  
+ *  Company     |  valid len  |  valid id
+ *  ------------+-------------+-----------
+ *   Visa       |   13, 16    |      4
+ *  
+ * @param len  length of card number of type int
+ * @param id  card company identifier of type int
+ * @return true if len and id have valid values for Visa, false otherwise
+ */
+bool is_visa(len, id)
+{
+    // since all Visa numbers start with 4, we have to check the first of the two digits of id
+    if ( ( len == 13 || len == 16 ) && ( id / 10 == 4 ) )
         return true;
     else
         return false;

@@ -10,6 +10,7 @@
 /* function prototypes */
 int get_length(long long num);
 int get_identifier(long long num, int len);
+bool is_amex(int len, int id);
 
 int main(void)
 {
@@ -37,4 +38,23 @@ int get_identifier(long long num, int len)
 {
     // Example:  4510 / 10^(4-2) = 45
     return num / (long long) pow(10, len - 2);
+}
+
+/**
+ * Checks if card has a valid AmEx number length and id
+ *  
+ *  Company     |  valid len  |   valid id
+ *  ------------+-------------+------------
+ *   AmEx       |     15      |    34, 37
+ *  
+ * @param len  length of card number of type int
+ * @param id  card company identifier of type int
+ * @return true if len and id have valid values for AmEx, false otherwise
+ */
+bool is_amex(len, id)
+{
+    if ( len == 15 && ( id == 34 || id == 37 ) )
+        return true;
+    else
+        return false;
 }

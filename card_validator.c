@@ -58,3 +58,22 @@ bool is_amex(len, id)
     else
         return false;
 }
+
+/**
+ * Checks if card has a valid MasterCard number length and id
+ *  
+ *  Company     |  valid len  |      valid id
+ *  ------------+-------------+--------------------
+ *  MASTERCARD  |    16       |  51, 52, 53, 54, 55
+ *  
+ * @param len  length of card number of type int
+ * @param id  card company identifier of type int
+ * @return true if len and id have valid values for MasterCard, false otherwise
+ */
+bool is_mastercard(len, id)
+{
+    if ( len == 16 && ( id == 51 || id == 52 || id == 53 || id == 54 || id == 55 ) )
+        return true;
+    else
+        return false;
+}

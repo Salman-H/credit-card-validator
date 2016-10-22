@@ -17,7 +17,7 @@ bool is_visa(int len, int id);
 
 int main(void)
 {
-	return 0;
+    return 0;
 }
 
 /**
@@ -71,7 +71,7 @@ int get_identifier(long long num, int len)
  */
 bool is_amex(len, id)
 {
-	return len == 15 && ( id == 34 || id == 37 )
+    return len == 15 && ( id == 34 || id == 37 )
 }
 
 /**
@@ -87,7 +87,7 @@ bool is_amex(len, id)
  */
 bool is_mastercard(len, id)
 {
-	return len == 16 && ( id == 51 || id == 52 || id == 53 || id == 54 || id == 55 )
+    return len == 16 && ( id == 51 || id == 52 || id == 53 || id == 54 || id == 55 )
 }
 
 /**

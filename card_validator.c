@@ -12,6 +12,7 @@ int get_length(long long num);
 int get_identifier(long long num, int len);
 bool is_checksum_valid(long long num);
 int get_first_luhn_sum(long long num);
+int get_second_luhn_sum(long long num);
 bool is_amex(int len, int id);
 bool is_mastercard(int len, int id);
 bool is_visa(int len, int id);
@@ -92,6 +93,36 @@ int get_first_luhn_sum(long long num)
         num = num / 100;
     }
  
+    return sum;
+}
+
+/**
+ * Helper function for the is_checksum_valid function. 
+ * Computes the sum of those digits of the card number that weren’t multiplied by 2 
+ * in the function get_first_luhn_sum.
+ * 
+ * @param num  number of card of type long long
+ * @return sum of the digits of num that weren’t multiplied by 2 in get_first_luhn_sum
+ */
+int get_second_luhn_sum(long long num)
+{
+    int digit;
+    int sum = 0;
+
+    // iterates over every other digit of the card number starting from the last 
+    // by reducing n by 2 digits in eatch iteration and stops when n becomes 0
+    while (num > 0)
+    {
+        // get the last digit of number
+        digit = num % 10;
+        
+        // sum the digits together
+        sum = sum + digit;
+        
+        // reduce number by shifting 2 digits left from right 
+        num = num / 100;
+    } 
+    
     return sum;
 }
 

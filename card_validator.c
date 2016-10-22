@@ -47,6 +47,54 @@ bool is_checksum_valid(long long num)
 }
 
 /**
+ * Helper function for the is_checksum_valid function. 
+ * Multiplies every other digit of the number to be validated by 2, starting 
+ * with the second-to-last digit, and then adds those products' digits together.
+ * 
+ * @param num  number of card of type long long
+ * @return sum of type int of the times 2 products of every other digit in num
+ */
+int get_first_luhn_sum(long long num)
+{
+    int digit;
+    int product = 0;
+    int sum = 0;
+    
+    // iterates over every other digit of num from the second to last by reducing num by 2 digits in eatch iteration
+    while(num > 0)
+    {
+        // get the second to last digit of number
+        digit = (num % 100) / 10;
+        
+        product = digit * 2;
+        
+        // if product consists of more than one digit, then sum its digits 
+        if ( (floor(log10(product)) + 1) > 1)
+        {
+            int digits_sum = 0;
+            
+            // this loop sums the digits in product for above condition 
+            while(product)
+            {
+                digits_sum = digits_sum + (product % 10);
+                product = product / 10;
+            }
+            
+            // this repalces product with the sum of its digits for above condition
+            product = digits_sum;
+        }
+        
+        // sum the product's digits together
+        sum = sum + product;
+        
+        // reduce number by shifting 2 digits left from right
+        num = num / 100;
+    }
+ 
+    return sum;
+}
+
+/**
  * computes the first 2 digits of a whole number
  * @param num  a number of type long long
  * @param len  length of this number of type int

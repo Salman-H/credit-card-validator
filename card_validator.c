@@ -10,6 +10,7 @@
 /* function prototypes */
 int get_length(long long num);
 int get_identifier(long long num, int len);
+bool is_checksum_valid(long long num);
 bool is_amex(int len, int id);
 bool is_mastercard(int len, int id);
 bool is_visa(int len, int id);
@@ -28,6 +29,21 @@ int get_length(long long num)
 {
     // ceil returns the smallest int >= log10(num) e.g. ceil(log10(4510)) = ceil(3.6) = 4
     return ceil(log10(num));
+}
+
+/**
+ * Uses two helper functions, get_first_luhn_sum() and get_second_luhn_sum() to implement 
+ * the Luhn Algorithm to compute and validate the checksum of a card number.
+ *
+ * @param num  a number of type long long
+ * @return true if last digit of checksum is zero, false otherwise
+ */
+bool is_checksum_valid(long long num)
+{
+    int checksum = get_first_luhn_sum(num) + get_second_luhn_sum(num);
+    
+    // checksum % 10 gives last digit of checksum
+    return checksum % 10 == 0
 }
 
 /**

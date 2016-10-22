@@ -11,6 +11,7 @@
 int get_length(long long num);
 int get_identifier(long long num, int len);
 bool is_checksum_valid(long long num);
+int get_first_luhn_sum(long long num);
 bool is_amex(int len, int id);
 bool is_mastercard(int len, int id);
 bool is_visa(int len, int id);
@@ -61,7 +62,7 @@ int get_first_luhn_sum(long long num)
     int sum = 0;
     
     // iterates over every other digit of num from the second to last by reducing num by 2 digits in eatch iteration
-    while(num > 0)
+    while (num > 0)
     {
         // get the second to last digit of number
         digit = (num % 100) / 10;
@@ -74,7 +75,7 @@ int get_first_luhn_sum(long long num)
             int digits_sum = 0;
             
             // this loop sums the digits in product for above condition 
-            while(product)
+            while (product > 0)
             {
                 digits_sum = digits_sum + (product % 10);
                 product = product / 10;

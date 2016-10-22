@@ -55,10 +55,7 @@ int get_identifier(long long num, int len)
  */
 bool is_amex(len, id)
 {
-    if ( len == 15 && ( id == 34 || id == 37 ) )
-        return true;
-    else
-        return false;
+	return len == 15 && ( id == 34 || id == 37 )
 }
 
 /**
@@ -74,10 +71,7 @@ bool is_amex(len, id)
  */
 bool is_mastercard(len, id)
 {
-    if ( len == 16 && ( id == 51 || id == 52 || id == 53 || id == 54 || id == 55 ) )
-        return true;
-    else
-        return false;
+	return len == 16 && ( id == 51 || id == 52 || id == 53 || id == 54 || id == 55 )
 }
 
 /**
@@ -94,8 +88,5 @@ bool is_mastercard(len, id)
 bool is_visa(len, id)
 {
     // since all Visa numbers start with 4, we have to check the first of the two digits of id
-    if ( ( len == 13 || len == 16 ) && ( id / 10 == 4 ) )
-        return true;
-    else
-        return false;
+    return ( len == 13 || len == 16 ) && ( id / 10 == 4 )
 }

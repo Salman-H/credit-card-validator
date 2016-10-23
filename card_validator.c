@@ -31,6 +31,9 @@ int main(void)
 
     // get length of credit card
     length = get_length(number);
+	
+    if (number <= 0 || is_checksum_valid(number) == false )   
+        printf("INVALID\n");  
     
 	return 0;
 }

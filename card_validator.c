@@ -19,7 +19,20 @@ bool is_visa(int len, int id);
 
 int main(void)
 {
-    return 0;
+    long long number; 
+    int length;  
+    
+    // first two digits of credit card number
+    int identifier;  
+    
+    // prompt user input of card number
+    printf("Number: ");
+    number = get_long_long();
+
+    // get length of credit card
+    length = get_length(number);
+    
+	return 0;
 }
 
 /**

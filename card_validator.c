@@ -34,6 +34,25 @@ int main(void)
 	
     if (number <= 0 || is_checksum_valid(number) == false )   
         printf("INVALID\n");  
+	
+	else 
+    {
+        // get id after verifiying checksum
+        identifier = get_identifier(number, length);
+        
+        // use card length and id to identify company
+        if ( is_amex(length, identifier) )
+            printf("AMEX\n");
+            
+        else if ( is_mastercard(length, identifier) )
+            printf("MASTERCARD\n");
+            
+        else if ( is_visa(length, identifier) )
+            printf("VISA\n");
+            
+        else
+            printf("INVALID\n");
+    }
     
 	return 0;
 }

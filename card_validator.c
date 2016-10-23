@@ -35,7 +35,7 @@ int main(void)
     if (number <= 0 || is_checksum_valid(number) == false )   
         printf("INVALID\n");  
 	
-	else 
+    else 
     {
         // get id after verifiying checksum
         identifier = get_identifier(number, length);
@@ -54,7 +54,7 @@ int main(void)
             printf("INVALID\n");
     }
     
-	return 0;
+    return 0;
 }
 
 /**
